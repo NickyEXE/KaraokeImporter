@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {ActionCableProvider} from 'react-actioncable-provider';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 // import { BrowserRouter as Router} from 'react-router-dom';
 // import {Route} from 'react-router-dom/Route';
 
