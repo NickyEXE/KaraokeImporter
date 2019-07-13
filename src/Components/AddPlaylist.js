@@ -9,10 +9,7 @@ class AddPlaylist extends Component {
 
 
     handleRes = (res) => {
-        console.log("in handle res")
-        console.log(res)
         if (res.id){
-            console.log("in the if")
             this.props.goToPlaylist(res.id)
         }
     }
