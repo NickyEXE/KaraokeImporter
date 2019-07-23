@@ -23,13 +23,17 @@ class Playlist extends Component {
         .then(res => this.setState({...res}))
     }
 
-    onReceived = (e) => console.log("I'm receiving", e)
+    onReceived = (payload) => {
+        this.setState({songs: [...this.state.songs.filter((song) => song.id !== payload.id), payload]})
+    }
+
     onConnected = (e) => console.log("I'm connected", e)
     onInitialized = (e) => console.log("I'm initialized", e)
     onDisconnected = (e) => console.log("I'm disconnected", e)
 
 
     render(){
+        console.log(this.state.songs)
         return (
             <div>
                 <ActionCableConsumer

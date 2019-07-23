@@ -27,10 +27,14 @@ class App extends Component {
     this.props.history.push(`/playlists/new`)
   }
 
+  goToPlaylists = () => {
+    this.props.history.push(`/playlists`)
+  }
+
 render(){
   return (
     <div>
-    <Navigator goToNewPlaylist={this.goToNewPlaylist}/>
+    <Navigator goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists}/>
     <Switch>
       <Route path='/playlists/new' render={(routeProps) => <AddPlaylist goToPlaylist={this.goToPlaylist} {...routeProps} />}/>
       <Route path='/playlists/:id' render={(routeProps) => <Playlist {...routeProps} goToSongEdit={this.goToSongEdit}/>}/>

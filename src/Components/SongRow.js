@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class SongRow extends Component {
 
     render(){
-        console.log(this.props)
         return (
             <React.Fragment>
                 <tr>
