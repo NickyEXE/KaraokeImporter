@@ -55,7 +55,7 @@ class Playlist extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.songs.length > 0 && this.state.songs.map(song => <SongRow key={this.uuid()} playlistId={this.id} goToSongEdit={this.props.goToSongEdit} {...song}/>)}
+                        {this.state.songs.length > 0 && this.state.songs.sort((songA, songB) => songA.spotify_artist.localeCompare(songB.spotify_artist)).map(song => <SongRow key={this.uuid()} playlistId={this.id} goToSongEdit={this.props.goToSongEdit} {...song}/>)}
                     </tbody>
                 </table>
             </div>
