@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Playlist from './Components/Playlist'
 import PlaylistIndex from './Components/PlaylistIndex'
-import EditSong from './Components/EditSong'
+import SongShow from './Components/SongShow'
 import Navigator from './Components/Navigator'
 import AddPlaylist from './Components/AddPlaylist'
 import { Route, Switch} from 'react-router-dom';
@@ -12,7 +12,7 @@ class App extends Component {
 
 
   goToSongEdit = (songId, playlistId) => {
-    this.props.history.push(`/songs/${songId}/edit`)
+    this.props.history.push(`/songs/${songId}`)
   }
 
   goBack = () => {
@@ -32,14 +32,18 @@ class App extends Component {
   }
 
 render(){
+  const mainStyle ={
+    // maxWidth: '500px',
+    align: 'center'
+  }
   return (
-    <div>
+    <div style={mainStyle}>
     <Navigator goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists}/>
     <Switch>
       <Route path='/playlists/new' render={(routeProps) => <AddPlaylist goToPlaylist={this.goToPlaylist} {...routeProps} />}/>
       <Route path='/playlists/:id' render={(routeProps) => <Playlist {...routeProps} goToSongEdit={this.goToSongEdit}/>}/>
       <Route path='/playlists' render={(routeProps) => <PlaylistIndex {...routeProps} goToPlaylist={this.goToPlaylist}/>}/>
-      <Route path='/songs/:id/edit' render={(routeProps) => <EditSong goBack={this.goBack}  {...routeProps}/>}/>
+      <Route path='/songs/:id' render={(routeProps) => <SongShow goBack={this.goBack}  {...routeProps}/>}/>
     </Switch>
     </div>
     );

@@ -27,11 +27,6 @@ class Playlist extends Component {
         this.setState({songs: [...this.state.songs.filter((song) => song.id !== payload.id), payload]})
     }
 
-    onConnected = (e) => console.log("I'm connected", e)
-    onInitialized = (e) => console.log("I'm initialized", e)
-    onDisconnected = (e) => console.log("I'm disconnected", e)
-
-
     render(){
         return (
             <div>
@@ -42,21 +37,7 @@ class Playlist extends Component {
                 onInitialized= {this.onInitialized}
                 onDisconnected={this.onDisconnected}
                 />
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Title (Spotify)</th>
-                            <th>Artist (Spotify)</th>
-                            <th>Title (Karaoke Machine)</th>
-                            <th>Artist (Karaoke Machine)</th>
-                            <th>Code</th>
-                            <th>Edit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.songs.length > 0 && this.state.songs.sort((songA, songB) => songA.spotify_artist.localeCompare(songB.spotify_artist)).map(song => <SongRow key={this.uuid()} playlistId={this.id} goToSongEdit={this.props.goToSongEdit} {...song}/>)}
-                    </tbody>
-                </table>
+                {this.state.songs.length > 0 && this.state.songs.sort((songA, songB) => songA.spotify_artist.localeCompare(songB.spotify_artist)).map(song => <SongRow key={this.uuid()} playlistId={this.id} goToSongEdit={this.props.goToSongEdit} {...song}/>)}
             </div>
             )
     }
