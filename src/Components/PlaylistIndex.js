@@ -17,14 +17,11 @@ class PlaylistIndex extends Component {
 
 
     render(){
-        console.log(this.state.playlists.length > 0)
         return (
-            <div>
+            <center>
                 <h1>This is a list of all the playlists in the database:</h1>
-                <ul>
-                {this.state.playlists.length > 0 && this.state.playlists.map(playlist => <li><a href={'/playlists/' + playlist.id}><strong>{playlist.name}</strong>: {playlist.description}</a></li>)}
-                </ul>
-            </div>
+                <div className="playlist-index">{this.state.playlists.map(playlist => <PlaylistRow {...playlist} goToPlaylist={this.props.goToPlaylist}/>)}</div>
+            </center>
             )
     }
 

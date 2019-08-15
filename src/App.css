@@ -28,6 +28,22 @@ input {
 .nav-button:hover, .nav-button:active {
   background-color: #373E90;
   cursor: pointer;
+}
+
+.playlist-index{
+  /* align-items: center; */
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+.playlist-card {
+  flex-grow: 1;
+  margin: 8px;
+  max-width: 250px;
+  border-color: #fec708;
+  border-style: solid;
+  border-width: .75px;
+  border-radius: 8px;
 
 }
 
