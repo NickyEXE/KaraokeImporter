@@ -29,6 +29,7 @@
   align-self: stretch; 
   display: flex;
   align-items: center;
+  text-align: center;
   color: #FEC708; 
 }
 .spotify-song { 
@@ -51,6 +52,7 @@
   grid-gap: 5px;
   align-items: stretch;
   background-color: #0D0323;
+  border-top: 0.75px solid #4a472c;
   padding: 10px;
 }
 
@@ -68,4 +70,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.loader {
+  border: 4px solid #B05EC8; /* Light grey */
+  border-top: 4px solid #FEC708;
+  border-radius: 80%;
+  width: 10px;
+  height: 10px;
+  text-align: center;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
