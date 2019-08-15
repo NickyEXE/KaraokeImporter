@@ -41,6 +41,7 @@ class EditSong extends Component {
 
 
     render(){
+        console.log("props in edit song", this.props)
         return (
             <div className="card">
             <h1>Correct a song in the database!</h1>
