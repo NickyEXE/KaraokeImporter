@@ -2,6 +2,35 @@
   text-align: center;
 }
 
+input {
+  background-color: black;
+  border-color: #B05EC8;
+  color: #fec708;
+  height: 20px;
+  border-radius: 8px;
+  width: 80%;
+  margin: 8px 5% 8px 5%;
+}
+
+.nav {
+  /* padding: 8px; */
+  background-color: #240174;
+  display: flex;
+}
+
+.nav-button {
+  flex-grow: 1;
+  padding: 10px;
+  border-left: .5px solid #4a472c;
+  border-right: .5px solid #4a472c;
+}
+
+.nav-button:hover, .nav-button:active {
+  background-color: #373E90;
+  cursor: pointer;
+
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -51,9 +80,28 @@
     'footer footer footer menu';
   grid-gap: 5px;
   align-items: stretch;
-  background-color: #0D0323;
+  /* background-color: #0D0323; */
   border-top: 0.75px solid #4a472c;
   padding: 10px;
+}
+
+.grid-container:hover, .grid-container:active {
+  background-color: #240174;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #240174;
+  padding-left: 0px;
+  margin-left: 20%;
+  margin-right: 20%;
+  color: #fec708;
+  font-size: 1em;
+  border-color: #fec708;
+  border-style: solid;
+  border-width: .75px;
+  padding: 5px;
+  border-radius: 8px;
 }
 
 .grid-container > div {
@@ -81,6 +129,20 @@
   height: 10px;
   text-align: center;
   animation: spin 2s linear infinite;
+}
+
+.link{
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: yellow;
+  cursor: pointer;
+}
+
+a:hover {
+  color: yellow;
+  cursor: pointer;
 }
 
 @keyframes spin {

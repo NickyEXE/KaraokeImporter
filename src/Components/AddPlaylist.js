@@ -36,7 +36,7 @@ class AddPlaylist extends Component {
     render(){
         console.log(this.state)
         return (
-            <div className="card">
+            <center className="card">
             <h1>Add Your Playlist!</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>
@@ -51,7 +51,7 @@ class AddPlaylist extends Component {
                     <br/>
                     <input type="submit" value="Submit" />
                 </form>
-            </div>
+            </center>
             )
     }
 

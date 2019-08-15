@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class EditSong extends Component {
+class SongShow extends Component {
 
     state = {
         artist: "",
@@ -8,7 +8,8 @@ class EditSong extends Component {
         spotify_artist: "",
         spotify_name: "",
         title: "",
-        code: ""
+        code: "",
+        correctASong: false
     }
 
     componentDidMount(){
@@ -39,41 +40,52 @@ class EditSong extends Component {
         this.setState({[e.target.id]: e.target.value})
     }
 
+    showCorrectASong=()=>{
+        this.setState(prevState => ({correctASong: !prevState.correctASong}))
+    }
+
 
     render(){
-        console.log("props in edit song", this.props)
         return (
-            <div className="card">
-            <h1>Correct a song in the database!</h1>
-            {this.state && this.state.title && 
+            <div className="card song-show">
+            <h1>{this.state.code}</h1>
+            <h1><i>{this.state.spotify_name}</i> - {this.state.spotify_artist}</h1>
+            <div onClick={this.showCorrectASong} className="link edit-button">Correct this song in our database</div>
+            {this.state && this.state.title && this.state.correctASong && 
+                <React.Fragment>
+                <p>This app has to do a little bit of guessing to map your Spotify playlist to the karaoke book. If you spot something incorrect, please do us a solid and help out this project by updating that song data here! (Doing so will update this song's records globally!)</p>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                    Title on Spotify:
+                    Title on Spotify: 
                     <input readOnly placeholder={this.state.spotify_name} disabled={true} />
                     </label>
                     <br/>
                     <label>
-                    Artist on Spotify:
+                    Artist on Spotify: 
                     <input readOnly placeholder={this.state.spotify_artist} disabled={true} />
                     </label>
                     <br/>
                     <label>
-                    Title on Karaoke Machine:
+                    Title on Karaoke Machine: 
                     <input type="text" value={this.state.title} id="title" onChange={this.handleChange} />
                     </label>
                     <br/>
                     <label>
-                    Artist on Karaoke Machine:
+                    Artist on Karaoke Machine: 
                     <input type="text" value={this.state.artist} id="artist" onChange={this.handleChange} />
                     </label>
                     <br/>
                     <label>
-                    Code on Karaoke Machine:
+                    Code on Karaoke Machine: 
                     <input type="text" value={this.state.code} id="code" onChange={this.handleChange} />
                     </label>
                     <br/>
                     <input type="submit" value="Submit" />
+                    <br/>
+                    <br/>
+                    <a href="http://www.singsingmedia.com/search">Go to Sing Sing Media's Website to Search Their Site</a>
                  </form>
+                 </React.Fragment>
             }
             </div>
             )
@@ -81,4 +93,4 @@ class EditSong extends Component {
 
 }
 
-export default EditSong
+export default SongShow
