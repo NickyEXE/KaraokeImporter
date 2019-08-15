@@ -33,7 +33,6 @@ class Playlist extends Component {
 
 
     render(){
-        console.log(this.state.songs)
         return (
             <div>
                 <ActionCableConsumer
