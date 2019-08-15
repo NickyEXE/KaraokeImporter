@@ -23,6 +23,44 @@
   color: #61dafb;
 }
 
+
+.song-code { 
+  grid-area: menu;
+  align-self: stretch; 
+  display: flex;
+  align-items: center;
+  color: #FEC708; 
+}
+.spotify-song { 
+  grid-area: main;
+  /* background-color: #0C0B3C; */
+  color: #B05EC8;
+ }
+.karaoke-song { 
+  grid-area: footer;
+  /* background-color: #0C0B3C; */
+  color: #B05EC8;
+ }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto 15%;
+  grid-template-areas: 
+    'main main main menu'
+    'footer footer footer menu';
+  grid-gap: 5px;
+  align-items: stretch;
+  background-color: #0D0323;
+  padding: 10px;
+}
+
+.grid-container > div {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  vertical-align: middle;
+  /* padding: 20px 0 */
+  /* font-size: 30px; */
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

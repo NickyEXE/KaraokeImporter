@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 
 class SongRow extends Component {
 
+
+
     render(){
+
+        // <td><button onClick={() => this.props.goToSongEdit(this.props.id, this.props.playlistId)}>Edit</button></td>
+
         return (
-            <React.Fragment>
-                <tr>
-                <td>{this.props.spotify_name}</td>
-                <td>{this.props.spotify_artist}</td>
-                <td>{this.props.code ? this.props.title : <div className="loader"></div>}</td>
-                <td>{this.props.code ? this.props.artist : <div className="loader"></div>}</td>
-                <td>{this.props.code ? this.props.code : <div className="loader"></div>}</td>
-                <td><button onClick={() => this.props.goToSongEdit(this.props.id, this.props.playlistId)}>Edit</button></td>
-                </tr>
-            </React.Fragment>
+            <div className="grid-container">
+                <div className="song-code">{this.props.code}</div>
+                <div className="spotify-song"><strong>{this.props.spotify_name}</strong> by {this.props.spotify_artist}</div>
+                <div className="karaoke-song">{this.props.code && "(As: " + this.props.title +" by " + this.props.artist +")"}</div>                 
+            </div>
             )
     }
 
