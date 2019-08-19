@@ -9,7 +9,7 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 // import {Route} from 'react-router-dom/Route';
 
 
-const API_WS_ROOT = 'ws://serene-scrubland-24770.herokuapp.com/cable'
+const API_WS_ROOT = 'wss://serene-scrubland-24770.herokuapp.com/cable'
 
 
 ReactDOM.render(
