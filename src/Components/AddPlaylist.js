@@ -16,7 +16,7 @@ class AddPlaylist extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/playlists`, {
+        fetch(`https://serene-scrubland-24770.herokuapp.com/playlists`, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             headers: {
                 'Content-Type': 'application/json',

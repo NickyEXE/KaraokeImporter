@@ -12,7 +12,7 @@ class Playlist extends Component {
     }
 
     id = this.props.match.params.id
-    source = "http://localhost:3000/playlists/"
+    source = "https://serene-scrubland-24770.herokuapp.com/playlists/"
 
     uuid=uuid.v4
 
@@ -24,6 +24,10 @@ class Playlist extends Component {
 
     onReceived = (payload) => {
         this.setState({songs: [...this.state.songs.filter((song) => song.id !== payload.id), payload]})
+    }
+
+    onConnected= () => {
+        console.log("we're connected")
     }
 
     render(){
