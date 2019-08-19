@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const PlaylistRow = (props) => {
     // In case Spotify Playlists have links for some reason.
@@ -8,7 +8,7 @@ const PlaylistRow = (props) => {
     return(
             <div className="playlist-card" onClick={() => props.goToPlaylist(props.id)}>
                     <strong>{props.name}</strong><br/>
-                    <img src={props.image_url} width="200px" height="200px"/><br/>
+                    <img src={props.image_url} width="200px" height="200px" alt={props.name + " Album Art"}/><br/>
                     {strippedText}<br/>
             </div>
 )}

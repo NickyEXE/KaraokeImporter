@@ -17,7 +17,6 @@ class Playlist extends Component {
     uuid=uuid.v4
 
     componentDidMount(){
-        console.log(this.source + this.id)
         fetch(this.source + this.id)
         .then(res => res.json())
         .then(res => this.setState({...res}))

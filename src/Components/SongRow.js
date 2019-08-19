@@ -10,7 +10,6 @@ class SongRow extends Component {
             switch (this.props.code){
                 case "0":
                     return "None"
-                    break;
                 case null:
                     return <div className="loader"></div>
                 default:

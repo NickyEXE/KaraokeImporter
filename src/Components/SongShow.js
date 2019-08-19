@@ -44,11 +44,13 @@ class SongShow extends Component {
         this.setState(prevState => ({correctASong: !prevState.correctASong}))
     }
 
+    doIExist = () => this.state.code && this.state.code !== "0"
+
 
     render(){
         return (
             <div className="card song-show">
-            <h1>{this.state.code}</h1>
+            <h1>{this.doIExist() && this.state.code}</h1>
             <h1><i>{this.state.spotify_name}</i> - {this.state.spotify_artist}</h1>
             <div onClick={this.showCorrectASong} className="link edit-button">Correct this song in our database</div>
             {this.state && this.state.correctASong && 
