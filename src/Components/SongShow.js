@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuid from "uuid";
 
 class SongShow extends Component {
 
@@ -9,8 +10,16 @@ class SongShow extends Component {
         spotify_name: "",
         title: "",
         code: "",
-        correctASong: false
+        correctASong: false,
+        lyrics: "",
+        url: "",
+        artist_url: "",
+        release_date: null,
+        album_art: "",
+        album_name: ""
     }
+
+    uuid=uuid.v4
 
     componentDidMount(){
         fetch(`http://localhost:3000/songs/${this.props.match.params.id}`)
@@ -46,12 +55,24 @@ class SongShow extends Component {
 
     doIExist = () => this.state.code && this.state.code !== "0"
 
+    simpleFormatLyrics = () => {
+        if (this.state.lyrics){
+            let arrayOfMusic = this.state.lyrics.split(/\n/ig)
+            arrayOfMusic = arrayOfMusic.map(string => <p key={this.uuid()}>{string}</p>)
+            return (arrayOfMusic)
+        }
+        else{
+            return "No lyrics available"
+        }
+      }
 
     render(){
+        console.log(this.state)
         return (
             <div className="card song-show">
             <h1>{this.doIExist() && this.state.code}</h1>
             <h1><i>{this.state.spotify_name}</i> - {this.state.spotify_artist}</h1>
+            {this.state.url !== "" && <iframe src={this.state.url.split(".com/").join(".com/embed/")} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
             <div onClick={this.showCorrectASong} className="link edit-button">Correct this song in our database</div>
             {this.state && this.state.correctASong && 
                 <React.Fragment>
@@ -89,6 +110,8 @@ class SongShow extends Component {
                  </form>
                  </React.Fragment>
             }
+            <h3>Lyrics:</h3>
+            <div>{this.simpleFormatLyrics()}</div>
             </div>
             )
     }
