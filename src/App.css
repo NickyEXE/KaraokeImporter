@@ -147,17 +147,46 @@ input {
   animation: spin 2s linear infinite;
 }
 
+
+.huge-loader {
+  border: 10px solid #B05EC8; /* Light grey */
+  border-top: 10px solid #FEC708;
+  border-radius: 80%;
+  width: 100px;
+  height: 100px;
+  margin-top: 30vh;
+  animation: spin 2s linear infinite;
+}
+
+.playlist-title {
+  font-size: 2em;
+  margin-top: .3em;
+  text-align: center;
+  margin-bottom: .3em;
+}
+
+.playlist-header {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.playlist-author {
+  
+}
+
 .link{
   text-decoration: underline;
 }
 
 .link:hover {
-  color: yellow;
+  color: #FEC708;
   cursor: pointer;
 }
 
 a:hover {
-  color: yellow;
+  color: #FEC708;
   cursor: pointer;
 }
 

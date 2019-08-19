@@ -7,9 +7,9 @@ const PlaylistRow = (props) => {
     const strippedText = divToStrip.innerText
     return(
             <div className="playlist-card" onClick={() => props.goToPlaylist(props.id)}>
-                    <strong>{props.name}</strong><br/>
-                    <img src={props.image_url} width="200px" height="200px" alt={props.name + " Album Art"}/><br/>
-                    {strippedText}<br/>
+                    <strong><p>{props.name}</p></strong>
+                    <img src={props.image_url} width="200px" height="200px" alt={props.name + " Album Art"}/><p>
+                    {strippedText}</p>
             </div>
 )}
 

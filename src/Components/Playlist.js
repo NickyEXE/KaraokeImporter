@@ -36,6 +36,10 @@ class Playlist extends Component {
                 onInitialized= {this.onInitialized}
                 onDisconnected={this.onDisconnected}
                 />
+                <h3 className="playlist-title">{this.state.name}</h3>
+                <img className="playlist-header" src={this.state.image_url} alt={this.state.name} />
+                <center><p className="playlist-author">Created by <b>{this.state.creator}</b></p></center>
+
                 {this.state.songs.length > 0 && this.state.songs.sort((songA, songB) => songA.spotify_artist.localeCompare(songB.spotify_artist)).map(song => <SongRow key={this.uuid()} playlistId={this.id} goToSongEdit={this.props.goToSongEdit} {...song}/>)}
             </div>
             )

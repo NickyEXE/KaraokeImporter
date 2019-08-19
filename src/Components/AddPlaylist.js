@@ -41,16 +41,19 @@ class AddPlaylist extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>
                     Your Name:
+                    <br/>
                     <input type="text" value={this.state.creator} id="creator" onChange={this.handleChange} />
                     </label>
                     <br/>
                     <label>
                     Your Playlist URL (grab it from Spotify):
+                    <br/>
                     <input type="text" value={this.state.url} id="url" onChange={this.handleChange} />
                     </label>
                     <br/>
                     <input type="submit" value="Submit" />
                 </form>
+                <h3>Please keep in mind that Spotify's API only gives us the first 100 songs on your playlist.</h3><h3>If you're sharing a long playlist, split it up into parts!</h3>
             </center>
             )
     }
