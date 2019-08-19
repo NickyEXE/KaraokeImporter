@@ -5,7 +5,6 @@ class SongRow extends Component {
     doIExist = () => this.props.code && this.props.code !== "0"
 
     render(){
-        console.log(this.props.code)
 
         const songCode = () => {
             switch (this.props.code){

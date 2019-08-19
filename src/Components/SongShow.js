@@ -51,7 +51,7 @@ class SongShow extends Component {
             <h1>{this.state.code}</h1>
             <h1><i>{this.state.spotify_name}</i> - {this.state.spotify_artist}</h1>
             <div onClick={this.showCorrectASong} className="link edit-button">Correct this song in our database</div>
-            {this.state && this.state.title && this.state.correctASong && 
+            {this.state && this.state.correctASong && 
                 <React.Fragment>
                 <p>This app has to do a little bit of guessing to map your Spotify playlist to the karaoke book. If you spot something incorrect, please do us a solid and help out this project by updating that song data here! (Doing so will update this song's records globally!)</p>
                 <form onSubmit={this.handleSubmit}>
