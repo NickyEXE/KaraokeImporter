@@ -72,7 +72,9 @@ class SongShow extends Component {
             <div className="card song-show">
             <h1>{this.doIExist() && this.state.code}</h1>
             <h1><i>{this.state.spotify_name}</i> - {this.state.spotify_artist}</h1>
+            {this.state.release_date && <p>From the album <i>{this.state.album_name}</i> ({this.state.release_date})</p>}
             {this.state.url !== "" && <iframe src={this.state.url.split(".com/").join(".com/embed/")} width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
+            <br/>
             <div onClick={this.showCorrectASong} className="link edit-button">Correct this song in our database</div>
             {this.state && this.state.correctASong && 
                 <React.Fragment>
