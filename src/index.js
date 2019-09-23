@@ -8,7 +8,7 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 // import { BrowserRouter as Router} from 'react-router-dom';
 // import {Route} from 'react-router-dom/Route';
 
-
+// const API_WS_ROOT = 'ws://localhost:3000/cable'
 const API_WS_ROOT = 'wss://serene-scrubland-24770.herokuapp.com/cable'
 
 
