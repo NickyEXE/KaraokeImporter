@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+
+.title {
+  color:  #ff69b4;
+  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+  text-align: center;
+}
+
+
 input {
   background-color: black;
   border-color: #B05EC8;
@@ -10,6 +18,14 @@ input {
   border-radius: 8px;
   width: 80%;
   margin: 8px 5% 8px 5%;
+}
+
+.homeLogo {
+  width: 75%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border-radius: 50%;
+  animation: App-logo-spin infinite 4s linear;
 }
 
 .nav {

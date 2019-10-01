@@ -5,6 +5,7 @@ import PlaylistIndex from './Components/PlaylistIndex'
 import SongShow from './Components/SongShow'
 import Navigator from './Components/Navigator'
 import AddPlaylist from './Components/AddPlaylist'
+import Home from './Components/Home'
 import { Route, Switch} from 'react-router-dom';
 
 
@@ -44,6 +45,7 @@ render(){
       <Route path='/playlists/:id' render={(routeProps) => <Playlist {...routeProps} goToSongEdit={this.goToSongEdit}/>}/>
       <Route path='/playlists' render={(routeProps) => <PlaylistIndex {...routeProps} goToPlaylist={this.goToPlaylist}/>}/>
       <Route path='/songs/:id' render={(routeProps) => <SongShow goBack={this.goBack}  {...routeProps}/>}/>
+      <Route exact path='/' render={(routeProps) => <Home {...routeProps}/>}/>
     </Switch>
     </div>
     );
