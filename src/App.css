@@ -35,11 +35,43 @@ input {
   display: flex;
 }
 
+
+@media screen and (max-width: 600px) {
+  .nav:not(.selected) {
+    flex-direction: column;
+    flex-flow: wrap;
+  }
+  .nav.selected {
+    flex-direction: column;
+    flex-flow: none
+  }
+  .nav .nav-button:not(:first-child):not(.verticalized) {display: none;}
+  .nav #dropdown-icon:not(.clicked) {
+    float: right;
+    display: block;
+  }
+  .nav #dropdown-icon.clicked {
+    float: center;
+    display: block;
+    order: 1;
+    transform: rotate(180deg)
+  }
+
+  .nav .dropdown {
+    order: 1
+  }
+}
 .nav-button {
   flex-grow: 1;
   padding: 10px;
   border-left: .5px solid #4a472c;
   border-right: .5px solid #4a472c;
+}
+
+#dropdown-icon {
+  display: none;
+  padding: 10px;
+  height: 1em;
 }
 
 .nav-button:hover, .nav-button:active {
