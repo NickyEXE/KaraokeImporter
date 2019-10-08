@@ -24,6 +24,7 @@ input {
   width: 75%;
   margin-top: 5%;
   margin-bottom: 5%;
+  max-width: 500px;
   border-radius: 50%;
   animation: App-logo-spin infinite 4s linear;
 }
@@ -158,6 +159,7 @@ input {
   border-top: 4px solid #FEC708;
   border-radius: 80%;
   width: 10px;
+  
   height: 10px;
   text-align: center;
   animation: spin 2s linear infinite;
