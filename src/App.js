@@ -3,6 +3,7 @@ import './App.css';
 import Playlist from './Components/Playlist'
 import PlaylistIndex from './Components/PlaylistIndex'
 import SongShow from './Components/SongShow'
+import SongIndex from './Components/SongIndex'
 import Navigator from './Components/Navigator'
 import AddPlaylist from './Components/AddPlaylist'
 import Home from './Components/Home'
@@ -32,6 +33,10 @@ class App extends Component {
     this.props.history.push(`/playlists`)
   }
 
+  viewAllSongs = () => {
+    this.props.history.push('/songs')
+  }
+
 render(){
   const mainStyle ={
     // maxWidth: '500px',
@@ -39,12 +44,13 @@ render(){
   }
   return (
     <div style={mainStyle}>
-    <Navigator goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists}/>
+    <Navigator goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists} viewAllSongs={this.viewAllSongs}/>
     <Switch>
       <Route path='/playlists/new' render={(routeProps) => <AddPlaylist goToPlaylist={this.goToPlaylist} {...routeProps} />}/>
       <Route path='/playlists/:id' render={(routeProps) => <Playlist {...routeProps} goToSongEdit={this.goToSongEdit}/>}/>
       <Route path='/playlists' render={(routeProps) => <PlaylistIndex {...routeProps} goToPlaylist={this.goToPlaylist}/>}/>
       <Route path='/songs/:id' render={(routeProps) => <SongShow goBack={this.goBack}  {...routeProps}/>}/>
+      <Route path='/songs/' render={(routeProps) => <SongIndex goBack={this.goBack} goToSongEdit={this.goToSongEdit} {...routeProps}/>}/>
       <Route exact path='/' render={(routeProps) => <Home {...routeProps}/>}/>
     </Switch>
     </div>

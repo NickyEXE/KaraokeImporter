@@ -5,9 +5,11 @@ class Navigator extends Component {
     expanded: false
   }
 
-  onClick = () => this.setState(prevState => ({expanded: !prevState.expanded}))
+  onExpand = () => this.setState(prevState => ({expanded: !prevState.expanded}))
 
   expanded = () => "nav-button" + (this.state.expanded ? " verticalized" : "")
+
+
 
   render(){
     return (
@@ -15,7 +17,8 @@ class Navigator extends Component {
       <center className={this.state.expanded ? "nav selected" : "nav"}>
         <div className={this.expanded()} onClick={this.props.goToPlaylists}>View Playlists</div>
         <div className={this.expanded()} onClick={this.props.goToNewPlaylist}>Create a New Playlist</div>
-        <div className="dropdown" onClick={this.onClick}><img id="dropdown-icon" className={this.state.expanded ? "dropdown-icon clicked" : ""} src={require("../assets/dropdown.png")} alt="Nicky Singing"/></div>
+        <div className={this.expanded()} onClick={this.props.viewAllSongs}>View All Songs</div>
+        <div className="dropdown" onClick={this.onExpand}><img id="dropdown-icon" className={this.state.expanded ? "dropdown-icon clicked" : ""} src={require("../assets/dropdown.png")} alt="Nicky Singing"/></div>
       </center>
     )
   }

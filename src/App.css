@@ -157,16 +157,16 @@ input {
 
 .edit-button {
   background-color: #240174;
-  padding-left: 0px;
-  margin-left: 20%;
-  margin-right: 20%;
+  /* padding-left: 0px; */
+  margin: 1em;
   color: #fec708;
   font-size: 1em;
   border-color: #fec708;
   border-style: solid;
   border-width: .75px;
-  padding: 5px;
+  padding: 10px;
   border-radius: 8px;
+  text-align: center;
 }
 
 .grid-container > div {
