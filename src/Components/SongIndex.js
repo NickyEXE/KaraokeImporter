@@ -6,7 +6,8 @@ class SongIndex extends Component {
 
     state = {
         songs:[],
-        sortByArtist: true
+        sortByArtist: true,
+        search: ""
     }
 
     uuid=uuid.v4
@@ -17,17 +18,17 @@ class SongIndex extends Component {
         .then(res => res.json())
         .then(res => this.setState({songs: res}))
     }
-
+    handleChange = (e) => this.setState({search: e.target.value})
     render(){
         const songs = this.state.sortByArtist ? this.state.songs.sort((a, b) => a.spotify_artist.localeCompare(b.spotify_artist)) : this.state.songs.sort((a, b) => a.spotify_name.localeCompare(b.spotify_name))
-        console.log(this.state)
+        const filteredSongs = songs.filter(song => song.spotify_artist.includes(this.state.search) || song.spotify_name.includes(this.state.search))
         return(
         <div>
         <h3><center>This represents all songs uploaded to our app, not all songs in the Karaoke book!</center></h3>
         <div onClick={this.changeSort} className="link edit-button">{this.state.sortByArtist ? "Sort by Title" : "Sort by Artist"}</div>
-        {this.state.songs.map(song => <SongRow key={this.uuid()} playlistId={this.id} goToSongEdit={this.props.goToSongEdit} {...song}/>)}</div>
+        <center><input type="text" value={this.state.title} placeholder="search for a song by title or artist!" id="search" onChange={this.handleChange} /></center>
+        {filteredSongs.map(song => <SongRow key={this.uuid()} playlistId={this.id} goToSongEdit={this.props.goToSongEdit} {...song}/>)}</div>
         )}
-
 }
 
 export default SongIndex
