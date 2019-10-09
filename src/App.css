@@ -117,6 +117,17 @@ input {
   color: #61dafb;
 }
 
+.checkbox { 
+  grid-area: left;
+  align-self: stretch; 
+  display: flex;
+  align-items: center;
+  /* text-align: center; */
+  color: #FEC708; 
+  font-size: 2em;
+  margin: 0px;
+  padding: 0px
+}
 
 .song-code { 
   grid-area: menu;
@@ -149,6 +160,21 @@ input {
   border-top: 0.75px solid #4a472c;
   padding: 10px;
 }
+
+.grid-select {
+  display: grid;
+  grid-template-columns: 4% auto auto auto 15%;
+  grid-template-areas: 
+    'left main main main menu'
+    'left footer footer footer menu';
+  grid-gap: 5px;
+  align-items: stretch;
+  /* background-color: #0D0323; */
+  border-top: 0.75px solid #4a472c;
+  padding: 10px;
+}
+
+
 
 .grid-container:hover, .grid-container:active {
   background-color: #240174;
