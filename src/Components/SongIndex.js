@@ -21,7 +21,7 @@ class SongIndex extends Component {
     handleChange = (e) => this.setState({search: e.target.value})
     render(){
         const songs = this.state.sortByArtist ? this.state.songs.sort((a, b) => a.spotify_artist.localeCompare(b.spotify_artist)) : this.state.songs.sort((a, b) => a.spotify_name.localeCompare(b.spotify_name))
-        const filteredSongs = songs.filter(song => song.spotify_artist.includes(this.state.search) || song.spotify_name.includes(this.state.search))
+        const filteredSongs = songs.filter(song => song.spotify_artist.toLowerCase().includes(this.state.search.toLowerCase()) || song.spotify_name.toLowerCase().includes(this.state.search.toLowerCase()))
         return(
         <div>
         <h3><center>This represents all songs uploaded to our app, not all songs in the Karaoke book!</center></h3>
