@@ -163,7 +163,7 @@ input {
 
 .grid-select {
   display: grid;
-  grid-template-columns: 4% auto auto auto 15%;
+  grid-template-columns: 30px auto auto auto 15%;
   grid-template-areas: 
     'left main main main menu'
     'left footer footer footer menu';

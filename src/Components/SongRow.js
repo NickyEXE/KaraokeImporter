@@ -6,7 +6,7 @@ class SongRow extends Component {
 
     doIExist = () => this.props.code && this.props.code !== "0"
 
-    onMouseDown = () => {
+    onPointerDown = () => {
         if (this.props.selectMode){
             this.props.selectSong(this.props.id)
             clicking = false
@@ -19,7 +19,7 @@ class SongRow extends Component {
         } 
     }
     
-    onMouseUp = () => {
+    onPointerUp = () => {
         clearTimeout(clicking)
         !!clicking && this.props.goToSongEdit(this.props.id)
         clicking = false
@@ -38,7 +38,7 @@ class SongRow extends Component {
             }        
         }    
         return (
-            <div className={this.props.selectMode ? "grid-select" : "grid-container"} onMouseDown={this.onMouseDown} onMouseUp={this.onMouseUp} >
+            <div className={this.props.selectMode ? "grid-select" : "grid-container"}  onPointerDown={this.onPointerDown} onPointerUp={this.onPointerUp} >
                 {this.props.selectMode && <div className="checkbox">{this.props.selected ? "☑" : "☐"}</div>}
                 <div className="song-code">{songCode()}</div>
                 <div className="spotify-song"><strong>{this.props.spotify_name}</strong> by {this.props.spotify_artist}</div>
