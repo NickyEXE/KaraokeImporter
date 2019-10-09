@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import uuid from "uuid";
-import SongRow from './SongRow.js'
+import SongIndexRow from './SongIndexRow.js'
 
 class SongIndex extends Component {
 
@@ -27,7 +27,7 @@ class SongIndex extends Component {
         <h3><center>This represents all songs uploaded to our app, not all songs in the Karaoke book!</center></h3>
         <div onClick={this.changeSort} className="link edit-button">{this.state.sortByArtist ? "Sort by Title" : "Sort by Artist"}</div>
         <center><input type="text" value={this.state.title} placeholder="search for a song by title or artist!" id="search" onChange={this.handleChange} /></center>
-        {filteredSongs.map(song => <SongRow key={this.uuid()} playlistId={this.id} goToSongEdit={this.props.goToSongEdit} {...song}/>)}</div>
+        {filteredSongs.map(song => <SongIndexRow key={this.uuid()} playlistId={this.id} goToSongEdit={this.props.goToSongEdit} {...song}/>)}</div>
         )}
 }
 
