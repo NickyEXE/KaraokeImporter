@@ -39,7 +39,7 @@ class SongRow extends Component {
         }    
         return (
             <div className={this.props.selectMode ? "grid-select" : "grid-container"}  onPointerDown={this.onPointerDown} onPointerUp={this.onPointerUp} >
-                {this.props.selectMode && <div className="checkbox">{this.props.selected ? "☑" : "☐"}</div>}
+                {this.props.selectMode && <img className="checkbox" src={this.props.selected ? require("../assets/clicked.svg") : require("../assets/unclicked.svg")}/>}
                 <div className="song-code">{songCode()}</div>
                 <div className="spotify-song"><strong>{this.props.spotify_name}</strong> by {this.props.spotify_artist}</div>
                 <div className="karaoke-song">{this.doIExist() && "(As: " + this.props.title +" by " + this.props.artist +")"}</div>                 
