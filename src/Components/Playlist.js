@@ -8,11 +8,11 @@ class Playlist extends Component {
     state = {
         name: "",
         description: "",
-        songs: [],
-        selectedSongs: []
+        songs: []
+        // selectedSongs: []
     }
 
-    selectSong = (id) => this.state.selectedSongs.includes(id) ? this.setState({selectedSongs: this.state.selectedSongs.filter(num => num !== id)}) : this.setState({selectedSongs: [...this.state.selectedSongs, id]})
+    
 
     id = this.props.match.params.id
     source = "https://serene-scrubland-24770.herokuapp.com/playlists/"
@@ -48,7 +48,7 @@ class Playlist extends Component {
                 <img className="playlist-header" src={this.state.image_url} alt={this.state.name} />
                 <center><p className="playlist-author">Created by <b>{this.state.creator}</b></p></center>
 
-                {this.state.songs.length > 0 && this.state.songs.sort((songA, songB) => songA.spotify_artist.localeCompare(songB.spotify_artist)).map(song => <SongRow key={this.uuid()} selectMode={this.state.selectedSongs.length > 0} selected={!!this.state.selectedSongs.includes(song.id)}selectSong={this.selectSong} playlistId={this.id} goToSongEdit={this.props.goToSongEdit} {...song}/>)}
+                {this.state.songs.length > 0 && this.state.songs.sort((songA, songB) => songA.spotify_artist.localeCompare(songB.spotify_artist)).map(song => <SongRow key={this.uuid()} selectMode={this.props.selectedSongs.length > 0} selected={!!this.props.selectedSongs.includes(song)} selectSong={this.props.selectSong} playlistId={this.id} goToSongEdit={this.props.goToSongEdit} song={song}/>)}
             </div>
             )
     }

@@ -8,12 +8,12 @@ class SongRow extends Component {
 
     onPointerDown = () => {
         if (this.props.selectMode){
-            this.props.selectSong(this.props.id)
+            this.props.selectSong(this.props.song)
             clicking = false
         }
         else {
             clicking = setTimeout(() => {
-                this.props.selectSong(this.props.id)
+                this.props.selectSong(this.props.song)
                 clicking = false
             }, 1000)
         } 
@@ -28,21 +28,21 @@ class SongRow extends Component {
 
     render(){
         const songCode = () => {
-            switch (this.props.code){
+            switch (this.props.song.code){
                 case "0":
                     return "None"
                 case null:
                     return <div className="loader"></div>
                 default:
-                    return this.props.code
+                    return this.props.song.code
             }        
         }    
         return (
             <div className={this.props.selectMode ? "grid-select" : "grid-container"}  onPointerDown={this.onPointerDown} onPointerUp={this.onPointerUp} >
                 {this.props.selectMode && <img className="checkbox" src={this.props.selected ? require("../assets/clicked.svg") : require("../assets/unclicked.svg")}/>}
                 <div className="song-code">{songCode()}</div>
-                <div className="spotify-song"><strong>{this.props.spotify_name}</strong> by {this.props.spotify_artist}</div>
-                <div className="karaoke-song">{this.doIExist() && "(As: " + this.props.title +" by " + this.props.artist +")"}</div>                 
+                <div className="spotify-song"><strong>{this.props.song.spotify_name}</strong> by {this.props.song.spotify_artist}</div>
+                <div className="karaoke-song">{this.doIExist() && "(As: " + this.props.song.title +" by " + this.props.song.artist +")"}</div>                 
             </div>
             )
     }
