@@ -4,7 +4,7 @@ let clicking = false
 
 class SongRow extends Component {
 
-    doIExist = () => this.props.code && this.props.code !== "0"
+    doIExist = () => this.props.song.code && this.props.song.code !== "0"
 
     onPointerDown = () => {
         if (this.props.selectMode){
@@ -42,7 +42,7 @@ class SongRow extends Component {
                 {this.props.selectMode && <img className="checkbox" src={this.props.selected ? require("../assets/clicked.svg") : require("../assets/unclicked.svg")}/>}
                 <div className="song-code">{songCode()}</div>
                 <div className="spotify-song"><strong>{this.props.song.spotify_name}</strong> by {this.props.song.spotify_artist}</div>
-                <div className="karaoke-song">{this.doIExist() && "(As: " + this.props.song.title +" by " + this.props.song.artist +")"}</div>                 
+        {this.props.playlistId && <div className="karaoke-song">{this.doIExist() && "(As: " + this.props.song.title +" by " + this.props.song.artist +")"}</div>}
             </div>
             )
     }
