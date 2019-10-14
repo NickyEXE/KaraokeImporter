@@ -27,7 +27,14 @@ class SongIndex extends Component {
         <h3><center>This represents all songs uploaded to our app, not all songs in the Karaoke book!</center></h3>
         <div onClick={this.changeSort} className="link edit-button">{this.state.sortByArtist ? "Sort by Title" : "Sort by Artist"}</div>
         <center><input type="text" value={this.state.title} placeholder="search for a song by title or artist!" id="search" onChange={this.handleChange} /></center>
-        {filteredSongs.map(song => <SongRow key={this.uuid()} playlistId={this.id} goToSongEdit={this.props.goToSongEdit} song={song}/>)}</div>
+        {filteredSongs.map(song => 
+        <SongRow key={this.uuid()} 
+            selectMode={this.props.selectedSongs.length > 0} 
+            selected={!!this.props.selectedSongs.includes(song)} 
+            selectSong={this.props.selectSong} 
+            goToSongEdit={this.props.goToSongEdit} 
+            song={song}
+        />)}</div>
         )}
 }
 
