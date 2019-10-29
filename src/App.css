@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+.centered {
+  align: 'center'
+}
 
 .title {
   color:  #ff69b4;
@@ -36,6 +39,27 @@ input {
 }
 
 
+.nav #queue-icon-pic{
+  height: 2em;
+  margin-top: .2em
+}
+
+.nav #queue-icon-songs{
+  position: absolute;
+    top: 60%;
+    color: #240174;
+    left: 50%;
+    background-color: #fec708;
+    border-radius: .8em;
+    padding-left: .2em;
+    padding-right: .2em;
+    font-size: .8em;
+}
+
+.nav #queue-icon{
+  position: relative
+}
+
 @media screen and (max-width: 600px) {
   .nav:not(.selected) {
     flex-direction: column;
@@ -45,11 +69,12 @@ input {
     flex-direction: column;
     flex-flow: none
   }
-  .nav .nav-button:not(:first-child):not(.verticalized) {display: none;}
+  .nav .nav-button:not(:nth-child(2)):not(.verticalized) {display: none;}
   .nav #dropdown-icon:not(.clicked) {
     float: right;
     display: block;
   }
+  .nav #queue-icon:not(.queued){display: none;}
   .nav #dropdown-icon.clicked {
     float: center;
     display: block;

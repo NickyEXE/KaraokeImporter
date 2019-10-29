@@ -4,6 +4,7 @@ import Playlist from './Components/Playlist'
 import PlaylistIndex from './Components/PlaylistIndex'
 import SongShow from './Components/SongShow'
 import SongIndex from './Components/SongIndex'
+import Queue from './Components/Queue'
 import Navigator from './Components/Navigator'
 import AddPlaylist from './Components/AddPlaylist'
 import Home from './Components/Home'
@@ -13,7 +14,7 @@ import { Route, Switch} from 'react-router-dom';
 class App extends Component {
 
   state = {
-    selectedSongs:[]
+    queue: []
   }
 
   goToSongEdit = (songId, playlistId) => {
@@ -40,28 +41,29 @@ class App extends Component {
     this.props.history.push('/songs')
   }
 
-  selectSong = (song) => this.state.selectedSongs.includes(song) ? this.setState({selectedSongs: this.state.selectedSongs.filter(num => num !== song)}) : this.setState({selectedSongs: [...this.state.selectedSongs, song]})
+  goToQueue = () => {
+    this.props.history.push('/queue')
+  }
+
+  sendToQueue = (songList) => {
+    this.setState({queue: this.state.queue.concat(songList)})
+  }
 
 render(){
-  const mainStyle ={
-    // maxWidth: '500px',
-    align: 'center'
-  }
   return (
-    <div style={mainStyle}>
-    <Navigator goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists} viewAllSongs={this.viewAllSongs}/>
+    <div className="centered">
+    <Navigator goToQueue={this.goToQueue} goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists} songCount={this.state.queue.length} viewAllSongs={this.viewAllSongs}/>
     <Switch>
       <Route path='/playlists/new' render={(routeProps) => <AddPlaylist goToPlaylist={this.goToPlaylist} {...routeProps} />}/>
       <Route path='/playlists/:id' render={(routeProps) => <Playlist {...routeProps} 
-        selectSong={this.selectSong} 
-        selectedSongs={this.state.selectedSongs} 
+        sendToQueue={this.sendToQueue}
         goToSongEdit={this.goToSongEdit}/>}/>
-      <Route path='/playlists' render={(routeProps) => <PlaylistIndex {...routeProps}  goToPlaylist={this.goToPlaylist}/>}/>
+      <Route path='/queue' render={(routeProps) => <Queue {...routeProps} goToSongEdit={this.goToSongEdit} songs={this.state.queue}/>}/>
+      <Route path='/playlists' render={(routeProps) => <PlaylistIndex {...routeProps} goToPlaylist={this.goToPlaylist}/>}/>
       <Route path='/songs/:id' render={(routeProps) => <SongShow goBack={this.goBack}  {...routeProps}/>}/>
       <Route path='/songs/' render={(routeProps) => <SongIndex 
         goBack={this.goBack}
-        selectSong={this.selectSong} 
-        selectedSongs={this.state.selectedSongs} 
+        sendToQueue = {this.sendToQueue}
         goToSongEdit={this.goToSongEdit} 
         {...routeProps}/>}/>
       <Route exact path='/' render={(routeProps) => <Home {...routeProps}/>}/>
