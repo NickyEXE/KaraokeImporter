@@ -49,10 +49,9 @@ render(){
     // maxWidth: '500px',
     align: 'center'
   }
-  console.log(this.state.queue)
   return (
     <div style={mainStyle}>
-    <Navigator goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists} viewAllSongs={this.viewAllSongs}/>
+    <Navigator goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists} songCount={this.state.queue.length} viewAllSongs={this.viewAllSongs}/>
     <Switch>
       <Route path='/playlists/new' render={(routeProps) => <AddPlaylist goToPlaylist={this.goToPlaylist} {...routeProps} />}/>
       <Route path='/playlists/:id' render={(routeProps) => <Playlist {...routeProps} 
