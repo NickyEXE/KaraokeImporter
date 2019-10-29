@@ -40,7 +40,7 @@ class Playlist extends Component {
         const selected = this.state.selectedSongs
         const numSelected = this.state.selectedSongs.length
         return (
-            <div>
+            <div onPointerDown={()=> console.log("we scrollin")} onTouchEnd={()=> console.log("no longer scrollin")}>
                 <ActionCableConsumer
                 channel= {{channel: 'PlaylistChannel', id: this.id}}
                 onConnected= {this.onConnected}

@@ -7,8 +7,11 @@ class SongIndex extends Component {
     state = {
         songs:[],
         sortByArtist: true,
-        search: ""
+        search: "",
+        selectedSongs: []
     }
+
+    selectSong = (song) => this.state.selectedSongs.includes(song) ? this.setState({selectedSongs: this.state.selectedSongs.filter(num => num !== song)}) : this.setState({selectedSongs: [...this.state.selectedSongs, song]})
 
     uuid=uuid.v4
 
@@ -29,9 +32,9 @@ class SongIndex extends Component {
         <center><input type="text" value={this.state.title} placeholder="search for a song by title or artist!" id="search" onChange={this.handleChange} /></center>
         {filteredSongs.map(song => 
         <SongRow key={this.uuid()} 
-            selectMode={this.props.selectedSongs.length > 0} 
-            selected={!!this.props.selectedSongs.includes(song)} 
-            selectSong={this.props.selectSong} 
+            selectMode={this.state.selectedSongs.length > 0} 
+            selected={!!this.state.selectedSongs.includes(song)} 
+            selectSong={this.selectSong} 
             goToSongEdit={this.props.goToSongEdit} 
             song={song}
         />)}</div>
