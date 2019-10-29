@@ -37,7 +37,15 @@ class SongIndex extends Component {
             selectSong={this.selectSong} 
             goToSongEdit={this.props.goToSongEdit} 
             song={song}
-        />)}</div>
+        />)}
+        {this.state.selectedSongs.length > 0 && <div className="footwrapper">
+                    <div className="foot">You have selected {this.state.selectedSongs.length} song{this.state.selectedSongs.length > 1 && "s"}.
+                        <div className="span-button" onClick={this.sendToQueue}>
+                            Send to Queue!
+                        </div>
+                    </div>
+                </div>}
+        </div>
         )}
 }
 

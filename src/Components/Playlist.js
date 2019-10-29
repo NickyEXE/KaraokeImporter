@@ -40,7 +40,7 @@ class Playlist extends Component {
         const selected = this.state.selectedSongs
         const numSelected = this.state.selectedSongs.length
         return (
-            <div onPointerDown={()=> console.log("we scrollin")} onTouchEnd={()=> console.log("no longer scrollin")}>
+            <div>
                 <ActionCableConsumer
                 channel= {{channel: 'PlaylistChannel', id: this.id}}
                 onConnected= {this.onConnected}
@@ -61,7 +61,8 @@ class Playlist extends Component {
                     goToSongEdit={this.props.goToSongEdit} 
                     song={song}
                 />)}
-                {numSelected > 0 && <div className="footwrapper"><div className="foot">You have selected {numSelected} song{numSelected > 1 && "s"}.
+                {numSelected > 0 && <div className="footwrapper">
+                    <div className="foot">You have selected {numSelected} song{numSelected > 1 && "s"}.
                         <div className="span-button" onClick={this.sendToQueue}>
                             Send to Queue!
                         </div>
