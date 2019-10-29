@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+.centered {
+  align: 'center'
+}
 
 .title {
   color:  #ff69b4;
