@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import uuid from "uuid";
 import SongRow from './SongRow.js'
+import QueueSendFooter from './QueueSendFooter.js'
 
 class SongIndex extends Component {
 
@@ -9,6 +10,11 @@ class SongIndex extends Component {
         sortByArtist: true,
         search: "",
         selectedSongs: []
+    }
+
+    sendToQueue = () => {
+        this.props.sendToQueue(this.state.selectedSongs)
+        this.setState({selectedSongs: []})
     }
 
     selectSong = (song) => this.state.selectedSongs.includes(song) ? this.setState({selectedSongs: this.state.selectedSongs.filter(num => num !== song)}) : this.setState({selectedSongs: [...this.state.selectedSongs, song]})
@@ -23,6 +29,7 @@ class SongIndex extends Component {
     }
     handleChange = (e) => this.setState({search: e.target.value})
     render(){
+        console.log(this.state.selectedSongs)
         const songs = this.state.sortByArtist ? this.state.songs.sort((a, b) => a.spotify_artist.localeCompare(b.spotify_artist)) : this.state.songs.sort((a, b) => a.spotify_name.localeCompare(b.spotify_name))
         const filteredSongs = songs.filter(song => song.spotify_artist.toLowerCase().includes(this.state.search.toLowerCase()) || song.spotify_name.toLowerCase().includes(this.state.search.toLowerCase()))
         return(
@@ -38,13 +45,7 @@ class SongIndex extends Component {
             goToSongEdit={this.props.goToSongEdit} 
             song={song}
         />)}
-        {this.state.selectedSongs.length > 0 && <div className="footwrapper">
-                    <div className="foot">You have selected {this.state.selectedSongs.length} song{this.state.selectedSongs.length > 1 && "s"}.
-                        <div className="span-button" onClick={this.sendToQueue}>
-                            Send to Queue!
-                        </div>
-                    </div>
-                </div>}
+        {this.state.selectedSongs.length > 0 && <QueueSendFooter numSongs={this.state.selectedSongs.length} sendToQueue={this.sendToQueue}/>}
         </div>
         )}
 }

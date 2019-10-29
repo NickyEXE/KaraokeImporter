@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import SongRow from './SongRow.js';
+import QueueSendFooter from './QueueSendFooter.js'
 import {ActionCableConsumer} from 'react-actioncable-provider';
+
+
 import uuid from "uuid";
 
 
@@ -10,6 +13,11 @@ class Playlist extends Component {
         description: "",
         songs: [],
         selectedSongs: []
+    }
+
+    sendToQueue = () => {
+        this.props.sendToQueue(this.state.selectedSongs)
+        this.setState({selectedSongs: []})
     }
 
     
@@ -36,7 +44,7 @@ class Playlist extends Component {
     selectSong = (song) => this.state.selectedSongs.includes(song) ? this.setState({selectedSongs: this.state.selectedSongs.filter(num => num !== song)}) : this.setState({selectedSongs: [...this.state.selectedSongs, song]})
 
     render(){
-        // console.log(this.state)
+        console.log(this.props.sendToQueue)
         const selected = this.state.selectedSongs
         const numSelected = this.state.selectedSongs.length
         return (
@@ -61,13 +69,7 @@ class Playlist extends Component {
                     goToSongEdit={this.props.goToSongEdit} 
                     song={song}
                 />)}
-                {numSelected > 0 && <div className="footwrapper">
-                    <div className="foot">You have selected {numSelected} song{numSelected > 1 && "s"}.
-                        <div className="span-button" onClick={this.sendToQueue}>
-                            Send to Queue!
-                        </div>
-                    </div>
-                </div>}
+                {this.state.selectedSongs.length > 0 && <QueueSendFooter numSongs={this.state.selectedSongs.length} sendToQueue={this.sendToQueue}/>}
             </div>
             )
     }

@@ -12,6 +12,10 @@ import { Route, Switch} from 'react-router-dom';
 
 class App extends Component {
 
+  state = {
+    queue: []
+  }
+
   goToSongEdit = (songId, playlistId) => {
     this.props.history.push(`/songs/${songId}`)
   }
@@ -35,24 +39,30 @@ class App extends Component {
   viewAllSongs = () => {
     this.props.history.push('/songs')
   }
+  sendToQueue = (songList) => {
+    // debugger
+    this.setState({queue: this.state.queue.concat(songList)})
+  }
 
 render(){
   const mainStyle ={
     // maxWidth: '500px',
     align: 'center'
   }
+  console.log(this.state.queue)
   return (
     <div style={mainStyle}>
     <Navigator goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists} viewAllSongs={this.viewAllSongs}/>
     <Switch>
       <Route path='/playlists/new' render={(routeProps) => <AddPlaylist goToPlaylist={this.goToPlaylist} {...routeProps} />}/>
       <Route path='/playlists/:id' render={(routeProps) => <Playlist {...routeProps} 
+        sendToQueue={this.sendToQueue}
         goToSongEdit={this.goToSongEdit}/>}/>
-      <Route path='/playlists' render={(routeProps) => <PlaylistIndex {...routeProps}  goToPlaylist={this.goToPlaylist}/>}/>
+      <Route path='/playlists' render={(routeProps) => <PlaylistIndex {...routeProps} goToPlaylist={this.goToPlaylist}/>}/>
       <Route path='/songs/:id' render={(routeProps) => <SongShow goBack={this.goBack}  {...routeProps}/>}/>
       <Route path='/songs/' render={(routeProps) => <SongIndex 
         goBack={this.goBack}
-  
+        sendToQueue = {this.sendToQueue}
         goToSongEdit={this.goToSongEdit} 
         {...routeProps}/>}/>
       <Route exact path='/' render={(routeProps) => <Home {...routeProps}/>}/>
