@@ -13,6 +13,15 @@
 }
 
 
+.helper {
+  color: #fec708;
+  font-size: .8em;
+  padding-top: .8em;
+  padding-bottom: 1.2em;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
 input {
   background-color: black;
   border-color: #B05EC8;
@@ -302,7 +311,8 @@ input {
 }
 
 .playlist-author {
-  
+  margin: .8em;
+  margin-bottom: 0em
 }
 
 .link{

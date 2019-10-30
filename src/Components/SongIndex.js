@@ -30,6 +30,7 @@ class SongIndex extends Component {
             <h3><center>This represents all songs uploaded to our app, not all songs in the Karaoke book!</center></h3>
             <div onClick={this.changeSort} className="link edit-button">{this.state.sortByArtist ? "Sort by Title" : "Sort by Artist"}</div>
             <center><input type="text" value={this.state.title} placeholder="search for a song by title or artist!" id="search" onChange={this.handleChange} /></center>
+            <center className="helper">Press and hold any song to begin adding songs to your queue!</center>
             <SongTable 
                 songs={filteredSongs} 
                 goToSongEdit={this.props.goToSongEdit} 
