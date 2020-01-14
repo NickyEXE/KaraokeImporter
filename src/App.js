@@ -8,6 +8,7 @@ import Queue from './Components/Queue'
 import Navigator from './Components/Navigator'
 import AddPlaylist from './Components/AddPlaylist'
 import Home from './Components/Home'
+import ImportPlaylists from './Components/ImportPlaylists'
 import { Route, Switch} from 'react-router-dom';
 
 
@@ -61,6 +62,7 @@ render(){
       <Route path='/queue' render={(routeProps) => <Queue {...routeProps} goToSongEdit={this.goToSongEdit} songs={this.state.queue}/>}/>
       <Route path='/playlists' render={(routeProps) => <PlaylistIndex {...routeProps} goToPlaylist={this.goToPlaylist}/>}/>
       <Route path='/songs/:id' render={(routeProps) => <SongShow goBack={this.goBack}  {...routeProps}/>}/>
+      <Route path='/user_auth' render={(routeProps) => <ImportPlaylists goBack={this.goBack}  {...routeProps}/>}/>
       <Route path='/songs/' render={(routeProps) => <SongIndex 
         goBack={this.goBack}
         sendToQueue = {this.sendToQueue}
@@ -68,6 +70,7 @@ render(){
         {...routeProps}/>}/>
       <Route exact path='/' render={(routeProps) => <Home {...routeProps}/>}/>
     </Switch>
+    <a href={`https://accounts.spotify.com/authorize?client_id=a752161e6a4047ee996898f99cdb045f&response_type=token&redirect_uri=http://localhost:3001/user_auth/&scope=playlist-read-private`}>Login</a>
     </div>
     );
   }
