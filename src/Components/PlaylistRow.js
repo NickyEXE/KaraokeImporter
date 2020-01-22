@@ -2,6 +2,7 @@ import React from 'react';
 
 const PlaylistRow = (props) => {
     // In case Spotify Playlists have links for some reason.
+    console.log(props.fromImport)
     const divToStrip = document.createElement("div")
     divToStrip.innerHTML = props.description
     const strippedText = divToStrip.innerText

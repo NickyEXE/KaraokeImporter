@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Home = () =>  {
+const Home = (props) =>  {
+    console.log(!!props.fromImport)
     const logo = require("../assets/nicky_singing.jpg")
   return (
     <center>

@@ -15,7 +15,8 @@ import { Route, Switch} from 'react-router-dom';
 class App extends Component {
 
   state = {
-    queue: []
+    queue: [],
+    token: null
   }
 
   goToSongEdit = (songId, playlistId) => {
@@ -50,6 +51,10 @@ class App extends Component {
     this.setState({queue: this.state.queue.concat(songList)})
   }
 
+  setAuthToken = (token) => {
+    this.setState({token: token})
+  }
+
 render(){
   return (
     <div className="centered">
@@ -62,7 +67,7 @@ render(){
       <Route path='/queue' render={(routeProps) => <Queue {...routeProps} goToSongEdit={this.goToSongEdit} songs={this.state.queue}/>}/>
       <Route path='/playlists' render={(routeProps) => <PlaylistIndex {...routeProps} goToPlaylist={this.goToPlaylist}/>}/>
       <Route path='/songs/:id' render={(routeProps) => <SongShow goBack={this.goBack}  {...routeProps}/>}/>
-      <Route path='/user_auth' render={(routeProps) => <ImportPlaylists goBack={this.goBack}  {...routeProps}/>}/>
+      <Route path='/user_auth' render={(routeProps) => <ImportPlaylists goBack={this.goBack} token={this.state.token} setAuthToken={this.setAuthToken} {...routeProps}/>}/>
       <Route path='/songs/' render={(routeProps) => <SongIndex 
         goBack={this.goBack}
         sendToQueue = {this.sendToQueue}
