@@ -67,14 +67,13 @@ class SongShow extends Component {
       }
 
     render(){
-        console.log(this.props)
         if (this.state.spotify_name){
         return (
             <div className="card song-show">
             <h1>{this.doIExist() && this.state.code}</h1>
             <h1><i>{this.state.spotify_name}</i> - {this.state.spotify_artist}</h1>
             {this.state.release_date && <p>From the album <i>{this.state.album_name}</i> ({this.state.release_date})</p>}
-            {this.state.url !== "" && <iframe title={this.state.title} src={this.state.url.split(".com/").join(".com/embed/")} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
+            {this.state.url !== "" && <iframe id="myIFrame" title={this.state.title} src={this.state.url.split(".com/").join(".com/embed/")} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
             <div onClick={() => this.props.history.goBack()} className="link">Go Back To Playlist</div><br/>
             <br/>
             <div onClick={this.showCorrectASong} className="link edit-button">Correct this song in our database</div>
