@@ -14,7 +14,7 @@ class Playlist extends Component {
     }
 
     id = this.props.match.params.id
-    source = "https://serene-scrubland-24770.herokuapp.com/playlists/"
+    source = "http://localhost:3000/playlists/"
 
     uuid=uuid.v4
 

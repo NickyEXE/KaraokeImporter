@@ -10,7 +10,7 @@ class PlaylistIndex extends Component {
     uuid=uuid.v4
 
     componentDidMount(){
-        fetch("https://serene-scrubland-24770.herokuapp.com/playlists")
+        fetch("http://localhost:3000/playlists")
         .then(res => res.json())
         .then(res => this.setState({playlists: res}))
     }

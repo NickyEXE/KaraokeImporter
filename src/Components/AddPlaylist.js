@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ImportPlaylists from './ImportPlaylists'
 
 class AddPlaylist extends Component {
 
@@ -16,7 +17,7 @@ class AddPlaylist extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`https://serene-scrubland-24770.herokuapp.com/playlists`, {
+        fetch(`http://localhost:3000/playlists`, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             headers: {
                 'Content-Type': 'application/json',
@@ -32,9 +33,21 @@ class AddPlaylist extends Component {
         this.setState({[e.target.id]: e.target.value})
     }
 
+    renderLogin = () => {
+        if (this.props.token){
+          return(<ImportPlaylists token={this.props.token}/>)
+        }
+        else{
+          return(
+            <a href={`https://accounts.spotify.com/authorize?client_id=a752161e6a4047ee996898f99cdb045f&response_type=token&redirect_uri=http://localhost:3001/playlists/new&scope=playlist-read-private`}>
+              <div className="edit-button">Login with Spotify to see and import your playlists!</div>
+            </a>
+            )
+        }
+      }
+
 
     render(){
-        console.log(this.state)
         return (
             <center className="card">
             <h1>Add Your Playlist!</h1>
@@ -54,7 +67,11 @@ class AddPlaylist extends Component {
                     <input type="submit" value="Submit" />
                 </form>
                 <h3>Please keep in mind that Spotify's API only gives us the first 100 songs on your playlist.</h3><h3>If you're sharing a long playlist, split it up into parts!</h3>
+                <h1>or...</h1>                
+                {this.renderLogin()}
+            
             </center>
+
             )
     }
 

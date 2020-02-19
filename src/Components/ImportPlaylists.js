@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom'
 import PlaylistRow from './PlaylistRow.js'
 
 export default class ImportPlaylists extends Component {
 
     state = {
-        playlists: []
+        playlists: [],
+        redirect: null
     }
 
     componentDidMount(){
-        this.props.setAuthToken(this.token)
+        // this.props.setAuthToken(this.token)
         this.fetchPlaylists(0)
         // this.fetchPlaylists(50)
         // this.fetchPlaylists(100)
         // this.fetchPlaylists(150)
     }
 
-    token = this.props.location.hash.split("=")[1].split("&")[0]
+    // token = this.props.location.hash.split("=")[1].split("&")[0]
 
     fetchPlaylists = (offset) => {
         const url = new URL("https://api.spotify.com/v1/me/playlists")
@@ -25,7 +27,7 @@ export default class ImportPlaylists extends Component {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
-                'Authorization': 'Bearer ' + this.token
+                'Authorization': 'Bearer ' + this.props.token
             }
         })
         .then(res => res.json())
@@ -52,15 +54,16 @@ export default class ImportPlaylists extends Component {
             body: JSON.stringify({url: playlist_url}),
         })
         .then(res => res.json())
-        .then(res => this.props.history.push("/playlists/" + res.id))
+        .then(res => this.setState({redirect: "/playlists/" + res.id}))
     }
 
     
     render(){
         return(
             <center>
-                <h1>Select one of your playlists to import:</h1>
+                <h1>Select one of your Spotify playlists to import:</h1>
                 <div className="playlist-index">{this.state.playlists.map(playlist => <PlaylistRow key={playlist.id} {...playlist} goToPlaylist={() => this.handleClick(playlist.fullData.href)}/>)}</div>
+                {this.state.redirect && <Redirect to={this.state.redirect}/>}
             </center>
         
             )

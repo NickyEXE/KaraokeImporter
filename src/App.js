@@ -60,12 +60,13 @@ class App extends Component {
   }
 
 render(){
+  console.log(this.props.location.hash)
   console.log(this.state.token)
   return (
     <div className="centered">
     <Navigator goToQueue={this.goToQueue} goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists} songCount={this.state.queue.length} viewAllSongs={this.viewAllSongs}/>
     <Switch>
-      <Route path='/playlists/new' render={(routeProps) => <AddPlaylist goToPlaylist={this.goToPlaylist} {...routeProps} />}/>
+      <Route path='/playlists/new' render={(routeProps) => <AddPlaylist goToPlaylist={this.goToPlaylist} token={this.state.token} {...routeProps} />}/>
       <Route path='/playlists/:id' render={(routeProps) => <Playlist {...routeProps} 
         sendToQueue={this.sendToQueue}
         goToSongEdit={this.goToSongEdit}/>}/>
@@ -78,7 +79,7 @@ render(){
         sendToQueue = {this.sendToQueue}
         goToSongEdit={this.goToSongEdit} 
         {...routeProps}/>}/>
-      <Route exact path='/' render={(routeProps) => <Home {...routeProps}/>}/>
+      <Route exact path='/' render={(routeProps) => <Home {...routeProps} token={this.state.token} />}/>
     </Switch>
     </div>
     );
