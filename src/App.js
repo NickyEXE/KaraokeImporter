@@ -55,7 +55,12 @@ class App extends Component {
     this.setState({token: token})
   }
 
+  componentDidMount(){
+    this.props.location.hash.split("=")[1] && this.setState({token: this.props.location.hash.split("=")[1].split("&")[0]})
+  }
+
 render(){
+  console.log(this.state.token)
   return (
     <div className="centered">
     <Navigator goToQueue={this.goToQueue} goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists} songCount={this.state.queue.length} viewAllSongs={this.viewAllSongs}/>
@@ -75,7 +80,6 @@ render(){
         {...routeProps}/>}/>
       <Route exact path='/' render={(routeProps) => <Home {...routeProps}/>}/>
     </Switch>
-    <a href={`https://accounts.spotify.com/authorize?client_id=a752161e6a4047ee996898f99cdb045f&response_type=token&redirect_uri=http://localhost:3001/user_auth/&scope=playlist-read-private`}>Login</a>
     </div>
     );
   }
