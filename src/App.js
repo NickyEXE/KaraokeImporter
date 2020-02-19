@@ -56,6 +56,8 @@ class App extends Component {
   }
 
 render(){
+  const hostname = window && window.location && window.location.hostname
+  console.log(hostname)
   return (
     <div className="centered">
     <Navigator goToQueue={this.goToQueue} goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists} songCount={this.state.queue.length} viewAllSongs={this.viewAllSongs}/>

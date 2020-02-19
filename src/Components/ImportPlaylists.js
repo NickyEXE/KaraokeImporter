@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom'
 import PlaylistRow from './PlaylistRow.js'
+import {API_ROOT} from '../helpers/urls.js'
 
 export default class ImportPlaylists extends Component {
 
@@ -44,7 +45,7 @@ export default class ImportPlaylists extends Component {
     }
 
     handleClick = (playlist_url) => {
-        fetch("https://serene-scrubland-24770.herokuapp.com/playlists/import", {
+        fetch(API_ROOT + "playlists/import", {
             method: 'POST',
             // mode: 'no-cors',
             headers: {

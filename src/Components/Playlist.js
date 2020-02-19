@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SongTable from './SongTable.js';
 import {ActionCableConsumer} from 'react-actioncable-provider';
-
+import {API_ROOT} from '../helpers/urls.js'
 
 import uuid from "uuid";
 
@@ -14,7 +14,7 @@ class Playlist extends Component {
     }
 
     id = this.props.match.params.id
-    source = "https://serene-scrubland-24770.herokuapp.com/playlists/"
+    source = API_ROOT + "playlists/"
 
     uuid=uuid.v4
 

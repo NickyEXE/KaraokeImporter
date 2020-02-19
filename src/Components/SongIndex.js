@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import uuid from "uuid";
 import SongTable from './SongTable.js'
+import {API_ROOT} from '../helpers/urls.js'
 
 class SongIndex extends Component {
 
@@ -17,7 +18,7 @@ class SongIndex extends Component {
 
     changeSort = () => this.setState(prevState => ({sortByArtist: !prevState.sortByArtist}))
     componentDidMount(){
-        fetch(`https://serene-scrubland-24770.herokuapp.com/songs`)
+        fetch(API_ROOT + `songs`)
         .then(res => res.json())
         .then(res => this.setState({songs: res}))
     }

@@ -1,4 +1,5 @@
 import React from 'react'
+import {PAGE_REDIRECT_ROOT} from "../helpers/urls.js"
 
 const Home = (props) =>  {
   const logo = require("../assets/nicky_singing.jpg")
@@ -9,7 +10,7 @@ const Home = (props) =>  {
     }
     else{
       return(
-        <a href={`https://accounts.spotify.com/authorize?client_id=a752161e6a4047ee996898f99cdb045f&response_type=token&redirect_uri=https://singwithnicky.herokuapp.com/&scope=playlist-read-private`}>
+        <a href={`https://accounts.spotify.com/authorize?client_id=a752161e6a4047ee996898f99cdb045f&response_type=token&redirect_uri=${PAGE_REDIRECT_ROOT}&scope=playlist-read-private`}>
           <div className="edit-button">Login with Spotify!</div>
         </a>
         )

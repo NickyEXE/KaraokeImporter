@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuid from "uuid";
+import {API_ROOT} from '../helpers/urls.js'
 
 class SongShow extends Component {
 
@@ -22,7 +23,7 @@ class SongShow extends Component {
     uuid=uuid.v4
 
     componentDidMount(){
-        fetch(`https://serene-scrubland-24770.herokuapp.com/songs/${this.props.match.params.id}`)
+        fetch(API_ROOT + `songs/${this.props.match.params.id}`)
         .then(res => res.json())
         .then(res => this.setState(res))
     }
@@ -30,7 +31,7 @@ class SongShow extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`https://serene-scrubland-24770.herokuapp.com/songs/${this.props.match.params.id}`, {
+        fetch(API_ROOT + `songs/${this.props.match.params.id}`, {
             method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, cors, *same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
