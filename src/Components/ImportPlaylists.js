@@ -14,6 +14,9 @@ export default class ImportPlaylists extends Component {
         this.fetchPlaylists(50)
         this.fetchPlaylists(100)
         this.fetchPlaylists(150)
+        this.fetchPlaylists(200)
+        this.fetchPlaylists(250)
+        this.fetchPlaylists(300)
     }
 
     fetchPlaylists = (offset) => {
