@@ -9,7 +9,7 @@ const Home = (props) =>  {
     }
     else{
       return(
-        <a href={`https://accounts.spotify.com/authorize?client_id=a752161e6a4047ee996898f99cdb045f&response_type=token&redirect_uri=http://serene-scrubland-24770.herokuapp.com/&scope=playlist-read-private`}>
+        <a href={`https://accounts.spotify.com/authorize?client_id=a752161e6a4047ee996898f99cdb045f&response_type=token&redirect_uri=http://singwithnicky.herokuapp.com/&scope=playlist-read-private`}>
           <div className="edit-button">Login with Spotify!</div>
         </a>
         )
