@@ -8,7 +8,6 @@ import Queue from './Components/Queue'
 import Navigator from './Components/Navigator'
 import AddPlaylist from './Components/AddPlaylist'
 import Home from './Components/Home'
-import ImportPlaylists from './Components/ImportPlaylists'
 import { Route, Switch} from 'react-router-dom';
 
 
@@ -51,17 +50,12 @@ class App extends Component {
     this.setState({queue: this.state.queue.concat(songList)})
   }
 
-  setAuthToken = (token) => {
-    this.setState({token: token})
-  }
-
   componentDidMount(){
+    // if the url has a spotify auth token, store it
     this.props.location.hash.split("=")[1] && this.setState({token: this.props.location.hash.split("=")[1].split("&")[0]})
   }
 
 render(){
-  console.log(this.props.location.hash)
-  console.log(this.state.token)
   return (
     <div className="centered">
     <Navigator goToQueue={this.goToQueue} goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists} songCount={this.state.queue.length} viewAllSongs={this.viewAllSongs}/>
@@ -73,7 +67,6 @@ render(){
       <Route path='/queue' render={(routeProps) => <Queue {...routeProps} goToSongEdit={this.goToSongEdit} songs={this.state.queue}/>}/>
       <Route path='/playlists' render={(routeProps) => <PlaylistIndex {...routeProps} goToPlaylist={this.goToPlaylist}/>}/>
       <Route path='/songs/:id' render={(routeProps) => <SongShow goBack={this.goBack}  {...routeProps}/>}/>
-      <Route path='/user_auth' render={(routeProps) => <ImportPlaylists goBack={this.goBack} token={this.state.token} setAuthToken={this.setAuthToken} {...routeProps}/>}/>
       <Route path='/songs/' render={(routeProps) => <SongIndex 
         goBack={this.goBack}
         sendToQueue = {this.sendToQueue}

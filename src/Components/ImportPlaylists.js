@@ -10,14 +10,11 @@ export default class ImportPlaylists extends Component {
     }
 
     componentDidMount(){
-        // this.props.setAuthToken(this.token)
         this.fetchPlaylists(0)
         // this.fetchPlaylists(50)
         // this.fetchPlaylists(100)
         // this.fetchPlaylists(150)
     }
-
-    // token = this.props.location.hash.split("=")[1].split("&")[0]
 
     fetchPlaylists = (offset) => {
         const url = new URL("https://api.spotify.com/v1/me/playlists")
@@ -44,7 +41,7 @@ export default class ImportPlaylists extends Component {
     }
 
     handleClick = (playlist_url) => {
-        fetch("http://localhost:3000/playlists/import", {
+        fetch("https://serene-scrubland-24770.herokuapp.com/playlists/import", {
             method: 'POST',
             // mode: 'no-cors',
             headers: {

@@ -17,7 +17,7 @@ class SongIndex extends Component {
 
     changeSort = () => this.setState(prevState => ({sortByArtist: !prevState.sortByArtist}))
     componentDidMount(){
-        fetch(`http://localhost:3000/songs`)
+        fetch(`https://serene-scrubland-24770.herokuapp.com/songs`)
         .then(res => res.json())
         .then(res => this.setState({songs: res}))
     }

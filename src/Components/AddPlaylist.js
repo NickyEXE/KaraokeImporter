@@ -17,7 +17,7 @@ class AddPlaylist extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/playlists`, {
+        fetch(`https://serene-scrubland-24770.herokuapp.com/playlists`, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ class AddPlaylist extends Component {
         }
         else{
           return(
-            <a href={`https://accounts.spotify.com/authorize?client_id=a752161e6a4047ee996898f99cdb045f&response_type=token&redirect_uri=http://localhost:3001/playlists/new&scope=playlist-read-private`}>
+            <a href={`https://accounts.spotify.com/authorize?client_id=a752161e6a4047ee996898f99cdb045f&response_type=token&redirect_uri=https://singwithnicky.herokuapp.com/playlists/new&scope=playlist-read-private`}>
               <div className="edit-button">Login with Spotify to see and import your playlists!</div>
             </a>
             )
