@@ -20,7 +20,7 @@ class App extends Component {
   
   goToPlaylist = (id) => {
     this.props.history.push(`/playlists/${id}`)
-  }
+  } 
 
   sendToQueue = (songList) => {
     this.setState({queue: this.state.queue.concat(songList)})
@@ -46,8 +46,6 @@ render(){
       <Route path='/playlists' render={(routeProps) => <PlaylistIndex {...routeProps} goToPlaylist={this.goToPlaylist}/>}/>
       <Route path='/songs/:id' render={(routeProps) => <SongShow {...routeProps}/>}/>
       <Route path='/songs/' render={(routeProps) => <SongIndex 
-        goBack={this.goBack}
-        sendToQueue = {this.sendToQueue}
         {...routeProps}/>}/>
       <Route exact path='/' render={(routeProps) => <Home {...routeProps} token={this.state.token} />}/>
     </Switch>
