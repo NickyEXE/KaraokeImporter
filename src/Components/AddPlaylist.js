@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import ImportPlaylists from './ImportPlaylists'
 import { API_ROOT, PAGE_REDIRECT_ROOT } from '../helpers/urls';
+import {Redirect} from 'react-router-dom'
 
 class AddPlaylist extends Component {
 
     state = {
         creator: "",
-        url: ""
+        url: "",
+        redirect: null
     }
 
 
     handleRes = (res) => {
         if (res.id){
-            this.props.goToPlaylist(res.id)
+            this.setState({redirect: "/playlist/" + res.id})
         }
     }
 
@@ -69,7 +71,7 @@ class AddPlaylist extends Component {
                 </form>
                 <h1>or...</h1>                
                 {this.renderLogin()}
-            
+                {this.state.redirect && <Redirect to={this.state.redirect}/>}
             </center>
 
             )
