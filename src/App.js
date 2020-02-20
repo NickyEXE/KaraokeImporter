@@ -22,22 +22,6 @@ class App extends Component {
     this.props.history.push(`/playlists/${id}`)
   }
 
-  goToNewPlaylist = () => {
-    this.props.history.push(`/playlists/new`)
-  }
-
-  goToPlaylists = () => {
-    this.props.history.push(`/playlists`)
-  }
-
-  viewAllSongs = () => {
-    this.props.history.push('/songs')
-  }
-
-  goToQueue = () => {
-    this.props.history.push('/queue')
-  }
-
   sendToQueue = (songList) => {
     this.setState({queue: this.state.queue.concat(songList)})
   }
@@ -52,7 +36,7 @@ render(){
   console.log(hostname)
   return (
     <div className="centered">
-    <Navigator goToQueue={this.goToQueue} goToNewPlaylist={this.goToNewPlaylist} goToPlaylists={this.goToPlaylists} songCount={this.state.queue.length} viewAllSongs={this.viewAllSongs}/>
+    <Navigator songCount={this.state.queue.length}/>
     <Switch>
       <Route path='/playlists/new' render={(routeProps) => <AddPlaylist goToPlaylist={this.goToPlaylist} token={this.state.token} {...routeProps} />}/>
       <Route path='/playlists/:id' render={(routeProps) => <Playlist {...routeProps} 
