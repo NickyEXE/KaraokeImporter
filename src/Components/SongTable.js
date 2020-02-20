@@ -29,7 +29,6 @@ class SongTable extends Component {
             selectMode={this.state.selectedSongs.length > 0} 
             selected={!!this.state.selectedSongs.includes(song)} 
             selectSong={this.selectSong} 
-            goToSongEdit={this.props.goToSongEdit} 
             song={song}
             playlistId={playlistId}
         />)})}

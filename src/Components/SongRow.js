@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { Holdable } from 'react-touch';
-
-// let clicking = false
+import {Redirect} from 'react-router-dom'
 
 class SongRow extends Component {
+
+    state = {
+        redirect: null
+    }
 
     doIExist = () => this.props.song.code && this.props.song.code !== "0"
 
     handleClick = () => {
-        this.props.selectMode ? this.props.selectSong(this.props.song) : this.props.goToSongEdit(this.props.song.id)
+        this.props.selectMode ? this.props.selectSong(this.props.song) : this.setState({redirect: "/songs/" + this.props.song.id})
     } 
     handleHold = () => {
         this.props.selectSong(this.props.song)
@@ -33,6 +36,7 @@ class SongRow extends Component {
                     <div className="song-code">{songCode()}</div>
                     <div className="spotify-song"><strong>{this.props.song.spotify_name}</strong> by {this.props.song.spotify_artist}</div>
                     {(this.props.playlistId !== 0) && <div className="karaoke-song">{this.doIExist() && "(As: " + this.props.song.title +" by " + this.props.song.artist +")"}</div>}
+                {this.state.redirect && <Redirect to={this.state.redirect}/>}
                 </div>
             </Holdable>
             )

@@ -17,14 +17,6 @@ class App extends Component {
     queue: [],
     token: null
   }
-
-  goToSongEdit = (songId, playlistId) => {
-    this.props.history.push(`/songs/${songId}`)
-  }
-
-  goBack = () => {
-    this.props.history.goBack();
-  }
   
   goToPlaylist = (id) => {
     this.props.history.push(`/playlists/${id}`)
@@ -65,14 +57,13 @@ render(){
       <Route path='/playlists/new' render={(routeProps) => <AddPlaylist goToPlaylist={this.goToPlaylist} token={this.state.token} {...routeProps} />}/>
       <Route path='/playlists/:id' render={(routeProps) => <Playlist {...routeProps} 
         sendToQueue={this.sendToQueue}
-        goToSongEdit={this.goToSongEdit}/>}/>
-      <Route path='/queue' render={(routeProps) => <Queue {...routeProps} goToSongEdit={this.goToSongEdit} songs={this.state.queue}/>}/>
+        />}/>
+      <Route path='/queue' render={(routeProps) => <Queue {...routeProps} songs={this.state.queue}/>}/>
       <Route path='/playlists' render={(routeProps) => <PlaylistIndex {...routeProps} goToPlaylist={this.goToPlaylist}/>}/>
-      <Route path='/songs/:id' render={(routeProps) => <SongShow goBack={this.goBack}  {...routeProps}/>}/>
+      <Route path='/songs/:id' render={(routeProps) => <SongShow {...routeProps}/>}/>
       <Route path='/songs/' render={(routeProps) => <SongIndex 
         goBack={this.goBack}
         sendToQueue = {this.sendToQueue}
-        goToSongEdit={this.goToSongEdit} 
         {...routeProps}/>}/>
       <Route exact path='/' render={(routeProps) => <Home {...routeProps} token={this.state.token} />}/>
     </Switch>

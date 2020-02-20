@@ -33,8 +33,7 @@ class SongIndex extends Component {
             <center><input type="text" value={this.state.title} placeholder="search for a song by title or artist!" id="search" onChange={this.handleChange} /></center>
             <center className="helper">Press and hold any song to begin adding songs to your queue!</center>
             <SongTable 
-                songs={filteredSongs} 
-                goToSongEdit={this.props.goToSongEdit} 
+                songs={filteredSongs}  
                 sendToQueue={this.props.sendToQueue}
             />
             </div>

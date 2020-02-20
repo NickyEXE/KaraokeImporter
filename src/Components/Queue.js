@@ -8,7 +8,6 @@ const Queue = (props) => {
         <h3><center>These are queued up and ready to sing!</center></h3>
         <SongTable 
             songs={props.songs} 
-            goToSongEdit={props.goToSongEdit} 
             sendToQueue={props.sendToQueue}
         />
         </div>

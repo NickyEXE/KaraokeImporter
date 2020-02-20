@@ -50,8 +50,7 @@ class Playlist extends Component {
                 <center><p className="playlist-author">Created by <b>{this.state.creator}</b></p></center>
                 <center className="helper">Press and hold any song to begin adding songs to your queue!</center>
                 <SongTable 
-                    songs={sortedSongs} 
-                    goToSongEdit={this.props.goToSongEdit} 
+                    songs={sortedSongs}  
                     sendToQueue={this.props.sendToQueue}
                     playlistId = {this.props.match.params.id}
                 />
