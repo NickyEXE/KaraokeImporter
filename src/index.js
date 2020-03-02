@@ -5,15 +5,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {ActionCableProvider} from 'react-actioncable-provider';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { WEBSOCKET_ROOT } from './helpers/urls';
 // import { BrowserRouter as Router} from 'react-router-dom';
 // import {Route} from 'react-router-dom/Route';
 
 // const API_WS_ROOT = 'ws://localhost:3000/cable'
-const API_WS_ROOT = 'wss:///cable'
 
 
 ReactDOM.render(
-    <ActionCableProvider url={API_WS_ROOT}>
+    <ActionCableProvider url={WEBSOCKET_ROOT}>
          <Router>
             <Route path="/"  component={App} />
         </Router>
