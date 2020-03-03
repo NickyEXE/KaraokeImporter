@@ -9,6 +9,7 @@ import Navigator from './Components/Navigator'
 import AddPlaylist from './Components/AddPlaylist'
 import Home from './Components/Home'
 import { Route, Switch} from 'react-router-dom';
+import {API_ROOT} from './helpers/urls.js'
 
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
   componentDidMount(){
     // if the url has a spotify auth token, store it
     this.props.location.hash.split("=")[1] && this.setState({token: this.props.location.hash.split("=")[1].split("&")[0]})
+    fetch(API_ROOT + "ping")
   }
 
 render(){
