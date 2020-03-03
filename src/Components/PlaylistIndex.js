@@ -18,12 +18,17 @@ class PlaylistIndex extends Component {
 
 
     render(){
+        if (this.state.playlists.length > 0){
         return (
             <center>
                 <h1>This is a list of all the playlists in the database:</h1>
                 <div className="playlist-index">{this.state.playlists.map(playlist => <PlaylistRow key={playlist.id} {...playlist} goToPlaylist={this.props.goToPlaylist}/>)}</div>
             </center>
             )
+        }
+        else {
+            return(<center><div className="huge-loader"></div></center>)
+        }
     }
 
 }
