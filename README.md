@@ -8,6 +8,6 @@ It also allows you to view existing playlists and search through a large collect
 
 ## Behind-the-Scenes
 
-To compensate for the issue that Sing Sing Media's only public-facing access to its database is a search bar that accepts one query at a time and that it times out if you ping it too many times too quickly, this works with a [rails backend]https://github.com/NickyEXE/KaraokeCodeGrabber to scrape as a background process while providing updates to the client via websockets.
+To compensate for the issue that Sing Sing Media's only public-facing access to its database is a search bar that accepts one query at a time and that it times out if you ping it too many times too quickly, this works with a (rails backend)[https://github.com/NickyEXE/KaraokeCodeGrabber] to scrape as a background process while providing updates to the client via websockets.
 
 It makes several educated guesses using fuzzy string matching and some string filtering to align songs from Spotify playlists with their relevant song listings in the karaoke database, and allows users to update songs if it makes a mistake.
